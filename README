@@ -1,0 +1,36 @@
+F. Rationale for the Package Delivery Algorithm
+
+F1. Strengths of the Algorithm
+    1. Simplicity and Ease of Implementation: The Nearest Neighbor Algorithm (NNA) is simple to implement and understand. It follows an intuitive approach of always choosing the nearest package delivery location from the current point. This makes the algorithm easy to maintain and modify, which is important in a real-world delivery system where quick changes might be necessary.
+
+    2. Efficiency for Small-Scale Problems: For scenarios involving a manageable number of delivery points, such as the 40-package limit in this task, the NNA provides an effective and relatively fast solution. Its time complexity of O(n^2) is suitable for small datasets, ensuring that routes can be calculated without overwhelming computational resources.
+
+F2. Accomplishing Scenario Goals
+    The algorithm accomplishes all the key scenario requirements absolutely. It even goes beyond in terms of efficiency and expediency in getting deliveries made. The key things it does that accomplish the primary goals of the scenario are as follows: 
+    - It prioritizes in making the deliveries those that are due first. This ensures that deadlines are met. 
+    - It uses a nearest-first search to accomplish the deliveries. This means, effectively, that it routes the trucks in the most sensible way through the service area, which keeps the mileage down and also uses the trucks efficiently in making the final deliveries. 
+    - It keeps track of where the packages are and provides the status in real-time to the customers. This is a key requirement of the scenario. 
+
+F3. Alternative Optimization Algorithms 
+    1. Dijkstra’s Algorithm (Source 1: https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-greedy-algo-7/)
+    - Overview: Dijkstra's algorithm determines the shortest path between two points in a graph. This could be used for our delivery problem if we treat the delivery locations as nodes and the distances between them as edge weights. 
+    - Comparison: The NNA makes decisions at each step that can be interpreted as greedy (not in a bad way), while Dijkstra's algorithm takes a more global view. Of course, this is partly what makes Dijkstra's algorithm more computationally intensive and partly what makes it capable of finding a path that's optimal for each delivery, not just a path that's good enough. 
+    2. Simulated Annealing (Source 2: https://www.geeksforgeeks.org/simulated-annealing/)
+    - Description: Simulated Annealing is a probabilistic algorithm used to find an approximate solution to an optimization problem. It emulates the annealing process of metals by allowing occasional acceptance of worse solutions to escape local minima, with the probability of acceptance decreasing over time (cooling schedule).
+    - Difference: Unlike the NNA, which is greedy and makes decisions solely based on immediate, local optimization, Simulated Annealing explores the solution space more broadly. It does this by accepting suboptimal routes early on to avoid being trapped in local optima. As the algorithm progresses, it focuses more on improving the current solution, making it suitable for finding near-optimal routes in larger, more complex delivery scenarios.
+
+G. Potential Future Enhancements
+    If I were to redo this project, I would: 
+    1. Use a Hybrid Algorithm: Employ the K Nearest Neighbor (KNN) Algorithm in combination with a depth-limited recursive search. This would allow better decision-making at each node of the route tree, without significantly increasing computation time. In a comparison between the KNN and nearest neighbor algorithms, KNN is the clear winner when it comes to making parallel decisions. 
+    2. Add Dynamic Rerouting: Build in logic that would allow the trucks to reroute themselves when something unexpected comes up during the course of their delivery.
+
+H. Assessing the Fitness of Data Structure for Purpose
+    The hash table utilized in the program effectively satisfies the scenario's requisites: - Accessible Data: It offers O(1) average time complexity for inserting, changing, and retrieving package information; that is, the is-essential-for-real-time-decision-making part of using a hash table. - Scale: The hash table can handle a reasonably large number of packages, ensuring it works efficiently as long as the number of packages doesn’t greatly exceed the initial table capacity.
+
+H1. Alternative Data Structures
+    1. Binary Search Tree (BST):
+    Description: A BST organizes data in a hierarchical manner, permitting average lookup, insertion, and deletion times of O(log n).
+    Difference: A BST is not as efficient as a hash table for constant-time access but is better than a hash table when it comes to ordered data retrieval.
+    2. Doubly Linked List:
+    Description: A doubly linked list is a linear data structure in which each data element, or node, is connected to its neighboring nodes by pointers. Each node contains a pointer to the previous node in the list and a pointer to the next node in the list.
+    Difference: A doubly linked list serves as another alternative to hash tables. While not providing constant-time access, it might perform better than a hash table if the data structure primarily served as an ordered list of elements.
